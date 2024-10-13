@@ -17,15 +17,15 @@ public class CursoIHM {
         int option = -1;
 
         while (option != 0) {
-            System.out.println("=== Curso Menu ===");
-            System.out.println("1. Adicionar Curso");
-            System.out.println("2. Ver todos os Cursos");
-            System.out.println("3. Atualizar Curso");
-            System.out.println("4. Deletar Curso");
-            System.out.println("0. Sair");
-            System.out.print("Escolha uma opção: ");
+            System.out.println("=== Course Menu ===");
+            System.out.println("1. Add Course");
+            System.out.println("2. View All Courses");
+            System.out.println("3. Update Course");
+            System.out.println("4. Delete Course");
+            System.out.println("0. Exit");
+            System.out.print("Choose an option: ");
             option = scanner.nextInt();
-            scanner.nextLine(); 
+            scanner.nextLine();
 
             switch (option) {
                 case 1:
@@ -41,10 +41,10 @@ public class CursoIHM {
                     deleteCurso(scanner);
                     break;
                 case 0:
-                    System.out.println("Saíndo...");
+                    System.out.println("Exiting...");
                     break;
                 default:
-                    System.out.println("Opção Inválida.");
+                    System.out.println("Invalid option.");
             }
         }
 
@@ -52,46 +52,46 @@ public class CursoIHM {
     }
 
     private void addCurso(Scanner scanner) {
-        System.out.print("Insira o código do curso: ");
+        System.out.print("Enter course code: ");
         int cod = scanner.nextInt();
-        scanner.nextLine(); 
-        System.out.print("Insira o nome do curso: ");
+        scanner.nextLine();
+        System.out.print("Enter course name: ");
         String nome = scanner.nextLine();
-        System.out.print("Insira o nome do professor do curso: ");
+        System.out.print("Enter course professor name: ");
         String nomeProfessor = scanner.nextLine();
-        System.out.print("Insira o período do curso: ");
+        System.out.print("Enter course period: ");
         String periodo = scanner.nextLine();
 
         Curso curso = new Curso(cod, nome, nomeProfessor, periodo);
         cursoDAO.create(curso);
-        System.out.println("Curso adicionado com sucesso!");
+        System.out.println("Course added successfully!");
     }
 
     private void viewAllCursos() {
-        System.out.println("=== Lista de Cursos ===");
+        System.out.println("=== List of Courses ===");
         for (Curso curso : cursoDAO.findAll()) {
             System.out.println(curso.toString());
         }
     }
 
     private void updateCurso(Scanner scanner) {
-        System.out.print("Informe o código do curso a ser atualizado: ");
+        System.out.print("Enter the course code to be updated: ");
         int cod = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
 
         Curso curso = cursoDAO.findByCodigo(cod);
         if (curso == null) {
-            System.out.println("Curso não encontrado.");
+            System.out.println("Course not found.");
             return;
         }
         cursoDAO.update(curso);
-        System.out.println("Curso atualizado com sucesso.");
+        System.out.println("Course updated successfully.");
     }
 
     private void deleteCurso(Scanner scanner) {
-        System.out.print("Insira o código do curso a ser deletado: ");
+        System.out.print("Enter the course code to be deleted: ");
         int cod = scanner.nextInt();
         cursoDAO.delete(cod);
-        System.out.println("Curso deletado!");
+        System.out.println("Course deleted!");
     }
 }
