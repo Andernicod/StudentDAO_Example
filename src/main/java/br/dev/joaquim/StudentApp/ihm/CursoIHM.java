@@ -78,11 +78,25 @@ public class CursoIHM {
         System.out.print("Enter the course code to be updated: ");
         int cod = scanner.nextInt();
         scanner.nextLine();
-
         Curso curso = cursoDAO.findByCodigo(cod);
         if (curso == null) {
             System.out.println("Course not found.");
             return;
+        }
+        System.out.print("Enter new course name (leave blank to keep current): ");
+        String novoNome = scanner.nextLine();
+        if (!novoNome.isEmpty()) {
+            curso.setNome(novoNome);
+        }
+        System.out.print("Enter new professor name (leave blank to keep current): ");
+        String novoNomeProfessor = scanner.nextLine();
+        if (!novoNomeProfessor.isEmpty()) {
+            curso.setNomeProfessor(novoNomeProfessor);
+        }
+        System.out.print("Enter new course period (leave blank to keep current): ");
+        String novoPeriodo = scanner.nextLine();
+        if (!novoPeriodo.isEmpty()) {
+            curso.setPeriodo(novoPeriodo);
         }
         cursoDAO.update(curso);
         System.out.println("Course updated successfully.");
