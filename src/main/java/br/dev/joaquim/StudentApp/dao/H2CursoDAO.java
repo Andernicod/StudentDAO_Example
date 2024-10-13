@@ -47,7 +47,7 @@ public class H2CursoDAO implements CursoDAO {
     public boolean create(Curso curso) {
         try {
             PreparedStatement pstm = conn.prepareStatement("INSERT INTO cursos (cod, nome, nomeProfessor, periodo) VALUES (?,?,?,?)");
-            pstm.setInt(1, curso.getCod());
+            pstm.setInt(1, curso.getCodigoCurso());
             pstm.setString(2, curso.getNome());
             pstm.setString(3, curso.getNomeProfessor());
             pstm.setString(4, curso.getPeriodo());
@@ -108,7 +108,7 @@ public class H2CursoDAO implements CursoDAO {
             pstm.setString(1, curso.getNome());
             pstm.setString(2, curso.getNomeProfessor());
             pstm.setString(3, curso.getPeriodo());
-            pstm.setInt(4, curso.getCod());
+            pstm.setInt(4, curso.getCodigoCurso());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {

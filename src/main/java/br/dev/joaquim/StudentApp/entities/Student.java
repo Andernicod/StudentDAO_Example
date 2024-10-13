@@ -32,4 +32,14 @@ public class Student {
   public String toString() {
     return "Student " + getName() + " [" + getRa() + "]";
   }
+
+public void setCursoFk(int cursoFk) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'setCursoFk'");
+}
+
+public int getCursoFk() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getCursoFk'");
+}
 }
